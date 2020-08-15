@@ -1,3 +1,5 @@
+<?php
+
 /**
  * Inheritance in PHP
  * 
