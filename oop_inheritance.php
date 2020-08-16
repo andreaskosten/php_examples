@@ -130,7 +130,7 @@ $goose->honk(2);
 
 
 /* creating object of class-inheritor - penguin */
-$penguin = new Penguin('Yang', 0, '80');
+$penguin = new Penguin('Yang', 0, 80);
 
 $penguin->fly();
 // >> penguins can not fly, so Yang can not fly too!
