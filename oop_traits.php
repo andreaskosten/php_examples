@@ -64,15 +64,11 @@ class Goose {
 }
 
 
-/* creating object of class "Duck" */
 $duck = new Duck('brown');
-
 $duck->quack(3);
 // >> brown duck: "quack quack quack"!
 
 
-/* creating object of class "Goose" */
 $goose = new Goose('big');
-
 $goose->honk(2);
 // >> big goose: "honk honk"!
