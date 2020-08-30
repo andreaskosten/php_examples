@@ -92,6 +92,7 @@ class Penguin extends Bird {
     }
     
     // overrided method "fly" for penguins:
+    // (Yep, it violates the Liskov substitution principle in SOLID. That's just example.)
     public function fly(){
         
         echo '<br>penguins can not fly, so '.$this->name.' can not fly too!';
