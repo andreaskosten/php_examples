@@ -4,8 +4,7 @@
  * Basic interface of "SpellCost" component defines behaviour that can be changed by decorators
  */
 interface SpellCost {
-	
-	public function calculateManaToSpend();
+    public function calculateManaToSpend();
 }
 
 
@@ -13,17 +12,17 @@ interface SpellCost {
  * Concrete "SpellCostFireball" and "SpellCostFrostball" components set default behaviour
  */
 class SpellCostFireball implements SpellCost {
-	
-	public function calculateManaToSpend(){
-		return 50;
-	}
+
+    public function calculateManaToSpend(){
+        return 50;
+    }
 }
 
 class SpellCostFrostball implements SpellCost {
-	
-	public function calculateManaToSpend(){
-		return 30;
-	}
+
+    public function calculateManaToSpend(){
+        return 30;
+    }
 }
 
 
@@ -31,16 +30,16 @@ class SpellCostFrostball implements SpellCost {
  * Basic class of Decorator implements the same interface, as other components
  */
 class SpellDecorator implements SpellCost {
-	
-	protected $spellCost;
 
-	public function __construct(SpellCost $spellCost){
-		$this->spellCost = $spellCost;
-	}
+    protected $spellCost;
 
-	public function calculateManaToSpend(){
-		return $this->spellCost->calculateManaToSpend();
-	}
+    public function __construct(SpellCost $spellCost){
+        $this->spellCost = $spellCost;
+    }
+
+    public function calculateManaToSpend(){
+        return $this->spellCost->calculateManaToSpend();
+    }
 }
 
 
@@ -49,16 +48,16 @@ class SpellDecorator implements SpellCost {
  */
 class SpellAdditionalSize extends SpellDecorator {
 
-	public function calculateManaToSpend(){
-		return 18 . ' + ' . parent::calculateManaToSpend();
-	}
+    public function calculateManaToSpend(){
+        return 18 . ' + ' . parent::calculateManaToSpend();
+    }
 }
 
 class SpellAdditionalSpeed extends SpellDecorator {
 
-	public function calculateManaToSpend(){
-		return 12 . ' + ' . parent::calculateManaToSpend();
-	}
+    public function calculateManaToSpend(){
+        return 12 . ' + ' . parent::calculateManaToSpend();
+    }
 }
 
 
@@ -104,3 +103,20 @@ $bigFireball = new SpellAdditionalSize($simpleFireball);
 $VERY_bigFireball = new SpellAdditionalSize($bigFireball);
 echo $VERY_bigFireball->calculateManaToSpend();
 // 18 + 18 + 50
+
+
+/*
+EXPECTED OUTPUT:
+
+50
+
+30
+
+18 + 50
+
+12 + 50
+
+18 + 12 + 50
+
+18 + 18 + 50
+*/
