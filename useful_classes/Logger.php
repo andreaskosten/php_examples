@@ -4,6 +4,7 @@ class Logger
 {
     private static $filename = '';
     private static $instance = null;
+	
     protected function __construct(){}
 
     public static function getInstance(): Logger
@@ -12,7 +13,9 @@ class Logger
             self::$instance = new static();
             $time = date('Y-m-d_H-i-s');
             self::$filename = 'logs/LoggerLog_' . $time . '.txt';
-            file_put_contents(self::$filename, 'created at ' . $time . "\n");
+			if (!file_exists(self::$filename)) {
+				file_put_contents(self::$filename, 'created at ' . $time . "\n");
+			}
         }
         return self::$instance;
     }
