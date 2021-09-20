@@ -26,6 +26,7 @@ class Exiter
     }
 }
 
+
 /*
 1. пример "хорошего" выхода:
 $exitData['color_1'] = 'blue';

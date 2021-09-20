@@ -22,25 +22,26 @@
 */
 
 
-class Bird {
-    
-    public function __construct($name, $speed){
-        
+class Bird
+{
+    public function __construct($name, $speed)
+	{
         $this->name = $name;
         $this->speed = $speed;
     }
     
     // method for birds:
-    public function fly(){
+    public function fly()
+	{
         echo '<br>bird '.$this->name.' flies at a speed of '.$this->speed.' km/h';
     }
 }
 
 
-class Duck extends Bird {
-    
-    public function __construct($name, $speed, $color){
-        
+class Duck extends Bird
+{
+    public function __construct($name, $speed, $color)
+	{
         // as we know, constructor of class "Bird" awaits 2 parameters:
         parent::__construct($name, $speed);
         
@@ -48,10 +49,10 @@ class Duck extends Bird {
     }
     
     // method for ducks:
-    public function quack($quantity){
-        
+    public function quack($quantity)
+	{
         $result = '';
-        for( $i = 0; $i < $quantity; $i++ ){
+        for ($i = 0; $i < $quantity; $i++) {
             $result .= ' quack ';
         }
         echo '<br>'.$this->color.' duck '.$this->name.': "'.trim($result).'"!';
@@ -59,10 +60,10 @@ class Duck extends Bird {
 }
 
 
-class Goose extends Bird {
-    
-    public function __construct($name, $speed, $size){
-        
+class Goose extends Bird
+{
+    public function __construct($name, $speed, $size)
+	{
         // as we know, constructor of class "Bird" awaits 2 parameters:
         parent::__construct($name, $speed);
         
@@ -70,10 +71,10 @@ class Goose extends Bird {
     }
     
     // method for geese:
-    public function honk($quantity){
-        
+    public function honk($quantity)
+	{
         $result = '';
-        for( $i = 0; $i < $quantity; $i++ ){
+        for ($i = 0; $i < $quantity; $i++) {
             $result .= ' honk ';
         }
         echo '<br>'.$this->size.' goose '.$this->name.': "'.trim($result).'"!';
@@ -81,10 +82,10 @@ class Goose extends Bird {
 }
 
 
-class Penguin extends Bird {
-    
-    public function __construct($name, $speed, $height){
-        
+class Penguin extends Bird
+{
+    public function __construct($name, $speed, $height)
+	{
         // as we know, constructor of class "Bird" awaits 2 parameters:
         parent::__construct($name, $speed);
         
@@ -93,8 +94,8 @@ class Penguin extends Bird {
     
     // overrided method "fly" for penguins:
     // (Yep, it violates the Liskov substitution principle in SOLID. That's just example.)
-    public function fly(){
-        
+    public function fly()
+	{
         echo '<br>penguins can not fly, so '.$this->name.' can not fly too!';
     }
 }

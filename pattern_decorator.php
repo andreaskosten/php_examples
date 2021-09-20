@@ -3,7 +3,8 @@
 /**
  * Basic interface of "SpellCost" component defines behaviour that can be changed by decorators
  */
-interface SpellCost {
+interface SpellCost
+{
     public function calculateManaToSpend();
 }
 
@@ -11,16 +12,18 @@ interface SpellCost {
 /**
  * Concrete "SpellCostFireball" and "SpellCostFrostball" components set default behaviour
  */
-class SpellCostFireball implements SpellCost {
-
-    public function calculateManaToSpend(){
+class SpellCostFireball implements SpellCost
+{
+    public function calculateManaToSpend()
+	{
         return 50;
     }
 }
 
-class SpellCostFrostball implements SpellCost {
-
-    public function calculateManaToSpend(){
+class SpellCostFrostball implements SpellCost
+{
+    public function calculateManaToSpend()
+	{
         return 30;
     }
 }
@@ -29,15 +32,17 @@ class SpellCostFrostball implements SpellCost {
 /**
  * Basic class of Decorator implements the same interface, as other components
  */
-class SpellDecorator implements SpellCost {
-
+class SpellDecorator implements SpellCost
+{
     protected $spellCost;
-
-    public function __construct(SpellCost $spellCost){
+	
+    public function __construct(SpellCost $spellCost)
+	{
         $this->spellCost = $spellCost;
     }
-
-    public function calculateManaToSpend(){
+	
+    public function calculateManaToSpend()
+	{
         return $this->spellCost->calculateManaToSpend();
     }
 }
@@ -46,16 +51,18 @@ class SpellDecorator implements SpellCost {
 /**
  * Concrete Decorators call wrapped object and modify its result
  */
-class SpellAdditionalSize extends SpellDecorator {
-
-    public function calculateManaToSpend(){
+class SpellAdditionalSize extends SpellDecorator
+{
+    public function calculateManaToSpend()
+	{
         return 18 . ' + ' . parent::calculateManaToSpend();
     }
 }
 
-class SpellAdditionalSpeed extends SpellDecorator {
-
-    public function calculateManaToSpend(){
+class SpellAdditionalSpeed extends SpellDecorator
+{
+    public function calculateManaToSpend()
+	{
         return 12 . ' + ' . parent::calculateManaToSpend();
     }
 }

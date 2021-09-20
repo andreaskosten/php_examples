@@ -16,49 +16,48 @@
 */
 
 
-trait Voice {
-    
-    public function voice($word, $quantity){
-        
+trait Voice
+{
+    public function voice($word, $quantity)
+	{
         $result = '';
-        for( $i = 0; $i < $quantity; $i++ ){
+        for ($i = 0; $i < $quantity; $i++) {
             $result .= ' '.$word.' ';
         }
-        
         return trim($result);
     }
 }
 
 
-class Duck {
-    
+class Duck
+{
     use Voice;
     
-    public function __construct($color){
-        
+    public function __construct($color)
+	{
         $this->color = $color;
     }
     
     // method for ducks:
-    public function quack($quantity){
-        
+    public function quack($quantity)
+	{
         echo '<br>'.$this->color.' duck: "'.$this->voice('quack', $quantity).'"!';
     }
 }
 
 
-class Goose {
-    
+class Goose
+{
     use Voice;
     
-    public function __construct($size){
-        
+    public function __construct($size)
+	{
         $this->size = $size;
     }
     
     // method for geese:
-    public function honk($quantity){
-        
+    public function honk($quantity)
+	{
         echo '<br>'.$this->size.' goose: "'.$this->voice('honk', $quantity).'"!';
     }
 }

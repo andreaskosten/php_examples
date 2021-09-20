@@ -9,33 +9,38 @@
 */
 
 
-trait Header {
-    
-    public function getBackground(){
+trait Header
+{
+    public function getBackground()
+	{
         echo "Header::getBackground<br>";
     }
     
-    public function getBorder(){
+    public function getBorder()
+	{
         echo "Header::getBorder<br>";
     }
 }
 
 
-trait Footer {
-    
-    public function getBackground(){
+trait Footer
+{
+    public function getBackground()
+	{
         echo "Footer::getBackground<br>";
     }
-    
-    public function getBorder(){
+	
+    public function getBorder()
+	{
         echo "Footer::getBorder<br>";
     }
 }
 
 
-class Landing {
-    
-    use Footer, Header {
+class Landing
+{
+    use Footer, Header
+	{
         Header::getBackground insteadof Footer;
         Footer::getBorder insteadof Header;
         Footer::getBackground as footerBackground;

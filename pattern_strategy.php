@@ -10,38 +10,43 @@
 /**
  *  This interface can be implemented by any type of weapon: sword, axe, staff etc...
  */
-interface WeaponBehavior {
+interface WeaponBehavior
+{
     public function useWeapon();
 }
 
 
-class SwordBehaviour implements WeaponBehavior {
-
-    public function useWeapon(){
+class SwordBehaviour implements WeaponBehavior
+{
+    public function useWeapon()
+	{
         echo "<br> sword caused 20 damage!";
     }
 }
 
 
-class AxeBehaviour implements WeaponBehavior {
-
-    public function useWeapon(){
+class AxeBehaviour implements WeaponBehavior
+{
+    public function useWeapon()
+	{
         echo "<br> axe caused 35 damage!";
     }
 }
 
 
-class StaffBehaviour implements WeaponBehavior {
-
-    public function useWeapon(){
+class StaffBehaviour implements WeaponBehavior
+{
+    public function useWeapon()
+	{
         echo "<br> staff caused 5 damage!";
     }
 }
 
 
-class HandBehaviour implements WeaponBehavior {
-
-    public function useWeapon(){
+class HandBehaviour implements WeaponBehavior
+{
+    public function useWeapon()
+	{
         echo "<br> hand caused no damage!";
     }
 }
@@ -51,44 +56,45 @@ class HandBehaviour implements WeaponBehavior {
 /**
  *  This class is basic for any type of characters: warriors, mages etc...
  */
-class Character{
-
+class Character
+{
     private $weaponBehaviour;
 
-    public function __construct($charName, $weaponBehaviour){
+    public function __construct($charName, $weaponBehaviour)
+	{
         $this->weaponBehaviour = $weaponBehaviour;
-
         $this->charName = $charName;
     }
 
-    public function setWeapon($weaponBehaviour){
+    public function setWeapon($weaponBehaviour)
+	{
         $this->weaponBehaviour = $weaponBehaviour;
     }
 
-    public function attack(){
-
+    public function attack()
+	{
         echo "<br><br> " . $this->className . " " . $this->charName . " attacks...";
         $this->weaponBehaviour->useWeapon();
     }
 }
 
 
-class Warrior extends Character {
-
+class Warrior extends Character
+{
     // specific properties and functions of warrior...
-    public function __construct($charName, $weaponBehaviour){
-
+    public function __construct($charName, $weaponBehaviour)
+	{
         parent::__construct($charName, $weaponBehaviour);
         $this->className = "warrior";
     }
 }
 
 
-class Mage extends Character {
-
+class Mage extends Character
+{
     // specific properties and functions of mage...
-    public function __construct($charName, $weaponBehaviour){
-
+    public function __construct($charName, $weaponBehaviour)
+	{
         parent::__construct($charName, $weaponBehaviour);
         $this->className = "mage";
     }

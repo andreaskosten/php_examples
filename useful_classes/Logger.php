@@ -31,6 +31,7 @@ class Logger
     }
 }
 
+
 /*
 USE:
 Logger::getInstance()->logAppend('some text');

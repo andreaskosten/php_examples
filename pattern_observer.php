@@ -1,63 +1,69 @@
 <?php
 
-class GuardTower implements \SplSubject {
-
+class GuardTower implements \SplSubject
+{
     // common state of the Subject "GuardTower" (for Observers):
     public $state;
-
+	
     // \SplObjectStorage - simple list of Observers:
     private $observers;
-
-
-    public function __construct(){
-
+	
+	
+    public function __construct()
+	{
         $this->observers = new \SplObjectStorage();
         $this->state = array('north' => 0, 'west' => 0);
     }
-
-
+	
+	
     /**
-     * methods for subscribing/unsubscribing
+     * subscribing
      */
-    public function attach(\SplObserver $observer){
+    public function attach(\SplObserver $observer)
+	{
         echo "<br><br>Main Tower: Attached an observer ".$observer->name.".";
         $this->observers->attach($observer);
     }
-
-    public function detach(\SplObserver $observer){
+	
+	
+	/**
+     * unsubscribing
+     */
+    public function detach(\SplObserver $observer)
+	{
         $this->observers->detach($observer);
         echo "<br><br>Main Tower: Detached an observer ".$observer->name.".";
     }
-
-
+	
+	
     /**
      * notifying Observers
      */
-    public function notify(){
-
+    public function notify()
+	{
         echo "<br>Main Tower: Notifying observers...";
-
-        foreach ($this->observers as $observer){
+		
+        foreach ($this->observers as $observer) {
             $observer->update($this);
         }
     }
-
-
+	
+	
     /**
      * some business logic of Subject (before notifying Observers)
      */
-    public function setEnemiesNearCoast($direction, $quantity){
-
-        if( $direction == "north" ){
+    public function setEnemiesNearCoast($direction, $quantity)
+	{
+        if ($direction == "north") {
             $this->state[0] = $quantity;
             $toSend = $this->state[0];
         }
-
-        if( $direction == "west" ){
+		
+        if ($direction == "west") {
             $this->state[1] = $quantity;
             $toSend = $this->state[1];
         }
-
+		
         echo "<br><br>Main Tower: I see ".$toSend." enemies in the ".$direction.".";
         $this->notify();
     }
@@ -69,36 +75,30 @@ class GuardTower implements \SplSubject {
  * Concrete Observers
  */
 
-class GuardsAtNorthCoast implements \SplObserver {
-
+class GuardsAtNorthCoast implements \SplObserver
+{
     public $name = "Norhern Guards";
-
-    public function update(\SplSubject $subject){
-
-        if( $subject->state[0] > 0 ){
-
+	
+    public function update(\SplSubject $subject)
+	{
+        if ($subject->state[0] > 0) {
             echo "<br>Northern Guards: Main Tower informs that ".$subject->state[0]." enemies are here! Prepare!";
-        }
-        else{
-
+        } else {
             echo "<br>Northern Guards: Main Tower informs that there are not enemies here.";
         }
     }
 }
 
 
-class GuardsAtWesternCoast implements \SplObserver {
-
+class GuardsAtWesternCoast implements \SplObserver
+{
     public $name = "Western Guards";
-
-    public function update(\SplSubject $subject){
-
-        if( $subject->state[1] > 0 ){
-
+	
+    public function update(\SplSubject $subject)
+	{
+        if ($subject->state[1] > 0) {
             echo "<br>Western Guards: Main Tower informs that ".$subject->state[1]." enemies are here! Prepare!";
-        }
-        else{
-
+        } else {
             echo "<br>Western Guards: Main Tower informs that there are not enemies here.";
         }
     }
