@@ -43,6 +43,7 @@ class EUCountriesListBuilder
 		}
 		
 		if ($language == 'see_en_val_ua') {
+			asort($array);
 			foreach ($array as $ua => $en) {
 				$result .= '<option value="'.$ua.'">' . $en . '</option>';
 			}
@@ -55,6 +56,7 @@ class EUCountriesListBuilder
 		}
 		
 		if ($language == 'en') {
+			asort($array);
 			foreach ($array as $ua => $en) {
 				$result .= '<option value="'.$en.'">' . $en . '</option>';
 			}
