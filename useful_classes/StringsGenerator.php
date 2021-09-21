@@ -12,7 +12,7 @@ class StringsGenerator
 	
 	
 	public function generateRandomString($charGroup, $length)
-    {
+	{
 		$charGroupDetected = false;
 		
 		if ($charGroup == 'all_letters_and_digits') {
@@ -42,8 +42,8 @@ class StringsGenerator
 		$result = '';
 		
 		for ($i = 0; $i < $length; $i++) {
-            $result .= $array[array_rand($array)];
-        }
+			$result .= $array[array_rand($array)];
+		}
 		
 		return $result;
 	}
