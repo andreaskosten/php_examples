@@ -11,42 +11,42 @@ class StringsGenerator
 	}
 	
 	
-    public function generateRandomString($charGroup, $length)
+	public function generateRandomString($charGroup, $length)
     {
-        $charGroupDetected = false;
+		$charGroupDetected = false;
 		
-        if ($charGroup == 'all_letters_and_digits') {
-            $array = array_merge($this->smallLettersLatin, $this->bigLettersLatin, $this->digits);
-            $charGroupDetected = true;
-        }
+		if ($charGroup == 'all_letters_and_digits') {
+			$array = array_merge($this->smallLettersLatin, $this->bigLettersLatin, $this->digits);
+			$charGroupDetected = true;
+		}
 		
 		if ($charGroup == 'small_letters_and_digits') {
-            $array = array_merge($this->smallLettersLatin, $this->digits);
-            $charGroupDetected = true;
-        }
+			$array = array_merge($this->smallLettersLatin, $this->digits);
+			$charGroupDetected = true;
+		}
 		
 		if ($charGroup == 'all_letters') {
-            $array = array_merge($this->smallLettersLatin, $this->bigLettersLatin);
-            $charGroupDetected = true;
-        }
+			$array = array_merge($this->smallLettersLatin, $this->bigLettersLatin);
+			$charGroupDetected = true;
+		}
 		
 		if ($charGroup == 'explicit_latin_letters') {
-            $array = array_merge($this->bigLettersLatinExplicit);
-            $charGroupDetected = true;
-        }
-
-        if (!$charGroupDetected) {
-            exit('StringsGenerator: charGroup is not detected');
-        }
-
-        $result = '';
-
-        for ($i = 0; $i < $length; $i++) {
+			$array = array_merge($this->bigLettersLatinExplicit);
+			$charGroupDetected = true;
+		}
+		
+		if (!$charGroupDetected) {
+			exit('StringsGenerator: charGroup is not detected');
+		}
+		
+		$result = '';
+		
+		for ($i = 0; $i < $length; $i++) {
             $result .= $array[array_rand($array)];
         }
-
-        return $result;
-    }
+		
+		return $result;
+	}
 }
 
 
