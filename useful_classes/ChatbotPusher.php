@@ -12,7 +12,7 @@ class ChatbotPusher
 {
     private string $token;
 
-    public function __construct($token)
+    public function __construct(string $token)
     {
         $this->token = $token;
     }
@@ -22,10 +22,10 @@ class ChatbotPusher
      *
      * @param int $chatId
      * @param string $message
-     * 
+     *
      * @return array
      */
-    public function sendMessage($chatId, $message): array
+    public function sendMessage(int $chatId, string $message): array
     {
         $this->writeLog('ChatbotPusher: sending message...');
         $data = [
@@ -44,10 +44,10 @@ class ChatbotPusher
      *
      * @param string $method
      * @param array $data
-     * 
+     *
      * @return array
      */
-    private function request($method, $data): array
+    private function request(string $method, array $data): array
     {
         $curl = curl_init();
 
@@ -71,7 +71,7 @@ class ChatbotPusher
      *
      * @param string $text
      */
-    private function writeLog($text): void
+    private function writeLog(string $text): void
     {
         // define needed storage or use special class, e.g.:
         // Logger::getInstance()->logAppend($text);
